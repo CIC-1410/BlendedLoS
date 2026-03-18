@@ -107,3 +107,54 @@ for source in ["amsterdam", "eicu", "hirid", "mimic4"]:
     print("\n")
     k += 1
 print("mean gap:", np.mean(mean_gap))
+
+# =============================================================================
+# ## Precision-Recall curves plot for each dataset
+# =============================================================================
+import matplotlib.pyplot as plt
+from sklearn.metrics import precision_recall_curve
+
+fig, axes = plt.subplots(2, 2, figsize=(10, 8))
+axes = axes.flatten()
+sources = ["amsterdam", "eicu", "hirid", "mimic4"]
+source_labels = {"amsterdam": "AmsterdamUMC", "eicu": "eICU",
+                 "hirid": "HiRID", "mimic4": "MIMIC-IV"}
+
+for k, source in enumerate(sources):
+    path2 = ("Y:/DDS_Rocheteau/BlendedLOS/results/dataset_benchmark_ok/"
+             + source + "_75/multitask/TPC/24-04-22_144517/test_predictions_mort.csv")
+    df = pd.read_csv(path2)
+    df.rename(columns={"label": "label_mort"}, inplace=True)
+
+    # Filter internal or external 
+    if val_mode == "int_val":
+        df = df[df['patientids'].str.contains(source, case=False, na=False)]
+    else:
+        df = df[~df['patientids'].str.contains(source, case=False, na=False)]
+
+    y_true  = df["label_mort"]
+    y_score = df["pred_mort"]
+
+    precision, recall, _ = precision_recall_curve(y_true, y_score)
+    auprc = calculate_auprc(y_true, y_score)
+
+    # Baseline = prevalence of positive class (random classifier)
+    baseline = y_true.mean()
+
+    ax = axes[k]
+    ax.plot(recall, precision, color='steelblue', lw=1.5,
+            label=f'AUPRC = {auprc:.3f}')
+    ax.axhline(y=baseline, color='gray', linestyle='--', lw=1,
+               label=f'Baseline = {baseline:.3f}')
+    ax.set_xlabel('Recall')
+    ax.set_ylabel('Precision')
+    ax.set_title(f'{source_labels[source]} ({val_mode})')
+    ax.set_xlim([0, 1])
+    ax.set_ylim([0, 1])
+    ax.legend(loc='upper right', fontsize=9)
+
+plt.suptitle('Precision-Recall curves — TPC model', fontsize=13, y=1.02)
+plt.tight_layout()
+plt.savefig(f'pr_curves_{val_mode}.png', dpi=150, bbox_inches='tight')
+plt.show()
+print(f"Courbes PR sauvegardées dans pr_curves_{val_mode}.png")
