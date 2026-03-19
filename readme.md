@@ -122,7 +122,7 @@ self = Experiments(
 
 #### 4. extraction_table
 
-This code produces the main table decribing the extraction of source database.
+This code produces the main table describing the extraction of source database.
 
 
 
