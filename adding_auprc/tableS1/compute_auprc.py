@@ -38,6 +38,9 @@ for row, model in enumerate(["LSTM", "Transformer", "TPC"]):
         # Validation
         df_source = df_pred[df_pred['patientids'].str.contains(source, case=False, na=False)]
 
+        # # Patient level agregation
+        # df_source = df_source.groupby('patientids').last().reset_index()
+
         y_true_mort  = df_source["label_mort"]
         y_score_mort = df_source["pred_mort"]
 
@@ -80,5 +83,5 @@ for row, model in enumerate(["LSTM", "Transformer", "TPC"]):
 
 plt.suptitle('Precision-Recall curves — Model benchmark (int val)', fontsize=13, y=1.02)
 plt.tight_layout()
-plt.savefig('pr_curves_model_benchmark.png', dpi=150, bbox_inches='tight')
+plt.savefig('pr_curves_model_benchmark_patient_agregation.png', dpi=150, bbox_inches='tight')
 plt.show()

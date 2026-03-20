@@ -1,0 +1,55 @@
+current model is LSTM
+evaluating on amsterdam
+AUPRC : 0.750
+IC95% AUPRC (Bootstrap) : [0.585, 0.886]
+AUPRC baseline (prevalence) : 0.080
+evaluating on eicu
+AUPRC : 0.430
+IC95% AUPRC (Bootstrap) : [0.251, 0.624]
+AUPRC baseline (prevalence) : 0.049
+evaluating on hirid
+AUPRC : 0.754
+IC95% AUPRC (Bootstrap) : [0.561, 0.910]
+AUPRC baseline (prevalence) : 0.057
+evaluating on mimic4
+AUPRC : 0.659
+IC95% AUPRC (Bootstrap) : [0.540, 0.770]
+AUPRC baseline (prevalence) : 0.112
+
+
+current model is Transformer
+evaluating on amsterdam
+AUPRC : 0.754
+IC95% AUPRC (Bootstrap) : [0.592, 0.893]
+AUPRC baseline (prevalence) : 0.076
+evaluating on eicu
+AUPRC : 0.458
+IC95% AUPRC (Bootstrap) : [0.274, 0.685]
+AUPRC baseline (prevalence) : 0.052
+evaluating on hirid
+AUPRC : 0.769
+IC95% AUPRC (Bootstrap) : [0.601, 0.908]
+AUPRC baseline (prevalence) : 0.074
+evaluating on mimic4
+AUPRC : 0.629
+IC95% AUPRC (Bootstrap) : [0.504, 0.748]
+AUPRC baseline (prevalence) : 0.112
+
+
+current model is TPC
+evaluating on amsterdam
+AUPRC : 0.795
+IC95% AUPRC (Bootstrap) : [0.664, 0.900]
+AUPRC baseline (prevalence) : 0.082
+evaluating on eicu
+AUPRC : 0.396
+IC95% AUPRC (Bootstrap) : [0.233, 0.567]
+AUPRC baseline (prevalence) : 0.064
+evaluating on hirid
+AUPRC : 0.811
+IC95% AUPRC (Bootstrap) : [0.659, 0.932]
+AUPRC baseline (prevalence) : 0.074
+evaluating on mimic4
+AUPRC : 0.688
+IC95% AUPRC (Bootstrap) : [0.574, 0.789]
+AUPRC baseline (prevalence) : 0.108

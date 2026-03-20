@@ -1,0 +1,41 @@
+Int val:
+
+amsterdam
+AUPRC : 0.734
+IC95% pour l'AUPRC (Bootstrap) : [0.630, 0.828]
+
+
+eicu
+AUPRC : 0.581
+IC95% pour l'AUPRC (Bootstrap) : [0.438, 0.712]
+
+
+hirid
+AUPRC : 0.822
+IC95% pour l'AUPRC (Bootstrap) : [0.724, 0.916]
+
+
+mimic4
+AUPRC : 0.726
+IC95% pour l'AUPRC (Bootstrap) : [0.647, 0.804]
+
+Ext val:
+
+amsterdam
+AUPRC : 0.547
+IC95% pour l'AUPRC (Bootstrap) : [0.485, 0.618]
+
+
+eicu
+AUPRC : 0.507
+IC95% pour l'AUPRC (Bootstrap) : [0.443, 0.573]
+
+
+hirid
+AUPRC : 0.586
+IC95% pour l'AUPRC (Bootstrap) : [0.525, 0.647]
+
+
+mimic4
+AUPRC : 0.540
+IC95% pour l'AUPRC (Bootstrap) : [0.466, 0.614]

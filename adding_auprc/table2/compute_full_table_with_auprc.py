@@ -1,4 +1,3 @@
-
 import pandas as pd
 import numpy as np
 import re
@@ -43,6 +42,9 @@ for source in ["amsterdam", "eicu", "hirid", "mimic4"]:
         df_pred = df_pred[~df_pred['patientids'].str.contains(source, case=False, na=False)]
         mape_paper = [91.4, 98.0, 142.5, 83.2]  # ext val
         auc_paper  = [0.738, 0.737, 0.801, 0.771]  # ext val
+
+    # Agregation by patient
+    ## df_pred = df_pred.groupby('patientids').last().reset_index()
 
     # -------------------------------------------------------------------------
     ## compute rlos mape — filtre: survivants uniquement + séjours > 2h
@@ -106,7 +108,7 @@ for source in ["amsterdam", "eicu", "hirid", "mimic4"]:
 
     print("\n")
     k += 1
-print("mean gap:", np.mean(mean_gap))
+    print("mean gap:", np.mean(mean_gap))
 
 # -------------------------------------------------------------------------
 # ## Precision-Recall curves plot for each dataset
@@ -131,6 +133,9 @@ for k, source in enumerate(sources):
         df = df[df['patientids'].str.contains(source, case=False, na=False)]
     else:
         df = df[~df['patientids'].str.contains(source, case=False, na=False)]
+
+    # Agregation by patient
+    ## df = df.groupby('patientids').last().reset_index()
 
     y_true  = df["label_mort"]
     y_score = df["pred_mort"]

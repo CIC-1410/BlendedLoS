@@ -21,8 +21,8 @@ def calculat_compo(mape, mape_ref, auc, auc_ref):
 # =============================================================================
 # ## table S2: IC95% computation via Bootstrap+Delong
 # =============================================================================
-val_mode = "int_val"
-# val_mode = "ext_val"
+# val_mode = "int_val"
+val_mode = "ext_val"
 k = 0
 mean_gap = []
 for source in ["amsterdam", "eicu", "hirid", "mimic4"]:
@@ -44,6 +44,9 @@ for source in ["amsterdam", "eicu", "hirid", "mimic4"]:
         mape_paper = [91.4, 98.0, 142.5, 83.2]  # ext val
         auc_paper  = [0.738, 0.737, 0.801, 0.771]  # ext val
 
+    # # Agregation by patient
+    # df_pred = df_pred.groupby('patientids').last().reset_index()
+
 #     # -------------------------------------------------------------------------
 #     ## compute rlos mape — filtre: survivants uniquement + séjours > 2h
 #     # -------------------------------------------------------------------------
@@ -57,7 +60,7 @@ for source in ["amsterdam", "eicu", "hirid", "mimic4"]:
 #     mean_gap.append(abs(mape - mape_paper[k]))
 
 #     ## Bootstrap pour IC95% de la MAPE
-#     n_bootstrap = 10000
+    n_bootstrap = 10000
 #     mape_bootstrapped = np.zeros(n_bootstrap)
 #     for i in range(n_bootstrap):
 #         y_true_resampled, y_pred_resampled = resample(y_true_los, y_pred_los, random_state=i)
@@ -72,7 +75,7 @@ for source in ["amsterdam", "eicu", "hirid", "mimic4"]:
 #     # -------------------------------------------------------------------------
 #     ## compute mortality AUROC via DeLong
 #     # -------------------------------------------------------------------------
-#     y_true_mort, y_score_mort = df_pred["label_mort"], df_pred["pred_mort"]
+    y_true_mort, y_score_mort = df_pred["label_mort"], df_pred["pred_mort"]
 
 #     ground_truth = y_true_mort.to_numpy()
 #     predictions  = y_score_mort.to_numpy()
@@ -86,27 +89,27 @@ for source in ["amsterdam", "eicu", "hirid", "mimic4"]:
 #     ecart_1, ecart_2 = auc - lower_bound, upper_bound - auc
 #     print(f"IC95% pour l'AUC reelle : [{auc_paper[k]-ecart_1:.3f} - {auc_paper[k]+ecart_2:.3f}]")
 
-#     # -------------------------------------------------------------------------
-#     ## compute mortality AUPRC via Bootstrap (pas d'équivalent DeLong )
-#     # -------------------------------------------------------------------------
-#     auprc = calculate_auprc(y_true_mort, y_score_mort)
-#     print(f"AUPRC : {auprc:.3f}")
+    # -------------------------------------------------------------------------
+    ## compute mortality AUPRC via Bootstrap (pas d'équivalent DeLong )
+    # -------------------------------------------------------------------------
+    auprc = calculate_auprc(y_true_mort, y_score_mort)
+    print(f"AUPRC : {auprc:.3f}")
 
-#     auprc_bootstrapped = np.zeros(n_bootstrap)
-#     for i in range(n_bootstrap):
-#         y_true_resampled, y_score_resampled = resample(y_true_mort, y_score_mort, random_state=i)
-#         auprc_bootstrapped[i] = calculate_auprc(
-#             pd.Series(y_true_resampled),
-#             pd.Series(y_score_resampled)
-#         )
+    auprc_bootstrapped = np.zeros(n_bootstrap)
+    for i in range(n_bootstrap):
+        y_true_resampled, y_score_resampled = resample(y_true_mort, y_score_mort, random_state=i)
+        auprc_bootstrapped[i] = calculate_auprc(
+            pd.Series(y_true_resampled),
+            pd.Series(y_score_resampled)
+        )
 
-#     lower_bound = np.percentile(auprc_bootstrapped, 2.5)
-#     upper_bound = np.percentile(auprc_bootstrapped, 97.5)
-#     print(f"IC95% pour l'AUPRC (Bootstrap) : [{lower_bound:.3f}, {upper_bound:.3f}]")
+    lower_bound = np.percentile(auprc_bootstrapped, 2.5)
+    upper_bound = np.percentile(auprc_bootstrapped, 97.5)
+    print(f"IC95% pour l'AUPRC (Bootstrap) : [{lower_bound:.3f}, {upper_bound:.3f}]")
 
-#     print("\n")
-#     k += 1
-# print("mean gap:", np.mean(mean_gap))
+    print("\n")
+    k += 1
+    # print("mean gap:", np.mean(mean_gap))
 
 # -------------------------------------------------------------------------
 # ## Precision-Recall curves plot for each dataset
@@ -132,6 +135,9 @@ for k, source in enumerate(sources):
     else:
         df = df[~df['patientids'].str.contains(source, case=False, na=False)]
 
+    # # Agregation by patient
+    # df = df.groupby('patientids').last().reset_index()
+
     y_true  = df["label_mort"]
     y_score = df["pred_mort"]
 
@@ -155,6 +161,6 @@ for k, source in enumerate(sources):
 
 plt.suptitle('Precision-Recall curves — TPC model', fontsize=13, y=1.02)
 plt.tight_layout()
-plt.savefig(f'pr_curves_{val_mode}.png', dpi=150, bbox_inches='tight')
+plt.savefig(f'pr_curves_patient_agregation{val_mode}.png', dpi=150, bbox_inches='tight')
 plt.show()
 print(f"Courbes PR sauvegardées dans pr_curves_{val_mode}.png")

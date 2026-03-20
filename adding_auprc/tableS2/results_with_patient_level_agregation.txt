@@ -1,0 +1,46 @@
+Int val :
+
+amsterdam
+AUPRC : 0.666
+IC95% pour l'AUPRC (Bootstrap) : [0.547, 0.777]
+
+
+eicu
+AUPRC : 0.420
+IC95% pour l'AUPRC (Bootstrap) : [0.293, 0.550]
+
+
+hirid
+AUPRC : 0.760
+IC95% pour l'AUPRC (Bootstrap) : [0.644, 0.862]
+
+
+mimic4
+AUPRC : 0.691
+IC95% pour l'AUPRC (Bootstrap) : [0.618, 0.759]
+
+
+Ext val :
+
+ python compute_full_table_with_auprc.py
+amsterdam
+AUPRC : 0.558
+IC95% pour l'AUPRC (Bootstrap) : [0.493, 0.623]
+
+
+eicu
+AUPRC : 0.469
+IC95% pour l'AUPRC (Bootstrap) : [0.410, 0.529]
+
+
+hirid
+AUPRC : 0.517
+IC95% pour l'AUPRC (Bootstrap) : [0.455, 0.581]
+
+
+mimic4
+AUPRC : 0.524
+IC95% pour l'AUPRC (Bootstrap) : [0.451, 0.597]
+
+
+
