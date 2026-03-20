@@ -143,8 +143,8 @@ def generate_latex():
         iv = results['int_val'][src_key]
         ev = results['ext_val'][src_key]
 
-        int_str = fmt_auprc(iv['auprc'], iv['auprc_ci'], iv['auprc_baseline'])  # ← baseline ajoutée
-        ext_str = fmt_auprc(ev['auprc'], ev['auprc_ci'], ev['auprc_baseline'])  # ← baseline ajoutée
+        int_str = fmt_auprc(iv['auprc'], iv['auprc_ci'], iv['auprc_baseline']) 
+        ext_str = fmt_auprc(ev['auprc'], ev['auprc_ci'], ev['auprc_baseline'])  
 
         if iv['auprc'] and ev['auprc']:
             variation = (ev['auprc'] - iv['auprc']) / iv['auprc'] * 100

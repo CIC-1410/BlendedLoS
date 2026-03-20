@@ -1,0 +1,30 @@
+\begin{table}[ht]
+\centering
+\caption{Comparison of the TPC model internal and external validation according to the dataset-models without drug exposure.}
+\label{tab:table2}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llccccc}
+\toprule
+\textbf{Task} & \textbf{Training dataset} & \textbf{Internal validation} & \textbf{External validation} & \textbf{Variation} \\
+\midrule
+\multirow{4}{*}{\makecell[l]{Remaining Length\\of Stay prediction\\(MAPE) [95\% CI]}}
+& AmsterdamUMC & 80.3 [78.998 -- 81.646] & 91.4 [90.418 -- 92.386] & +13.8\% \\
+& eICU & 87.4 [86.494 -- 88.334] & 98.0 [97.379 -- 98.609] & +12.1\% \\
+& HiRID & 83.2 [81.703 -- 84.747] & 142.5 [141.903 -- 143.096] & +71.3\% \\
+& MIMIC-IV & 82.8 [82.005 -- 83.593] & 83.2 [82.577 -- 83.835] & +0.5\% \\
+\midrule
+\multirow{4}{*}{\makecell[l]{Mortality prediction\\(AUROC) [95\% CI]}}
+& AmsterdamUMC & 0.774 [0.770 -- 0.778] & 0.738 [0.736 -- 0.740] & -4.7\% \\
+& eICU & 0.788 [0.783 -- 0.793] & 0.737 [0.734 -- 0.740] & -6.5\% \\
+& HiRID & 0.851 [0.847 -- 0.855] & 0.801 [0.798 -- 0.804] & -5.9\% \\
+& MIMIC-IV & 0.858 [0.855 -- 0.861] & 0.771 [0.768 -- 0.774] & -10.1\% \\
+\midrule
+\multirow{4}{*}{\makecell[l]{Mortality prediction\\(AUPRC) [95\% CI]}}
+& AmsterdamUMC & 0.181 [0.176 -- 0.186] (baseline: 0.086) & 0.404 [0.399 -- 0.408] (baseline: 0.135) & +123.2\% \\
+& eICU & 0.247 [0.239 -- 0.256] (baseline: 0.082) & 0.292 [0.288 -- 0.296] (baseline: 0.140) & +18.2\% \\
+& HiRID & 0.628 [0.618 -- 0.638] (baseline: 0.134) & 0.323 [0.318 -- 0.327] (baseline: 0.136) & -48.6\% \\
+& MIMIC-IV & 0.543 [0.537 -- 0.550] (baseline: 0.169) & 0.304 [0.300 -- 0.309] (baseline: 0.114) & -44.0\% \\
+\bottomrule
+\end{tabular}
+}
+\end{table}

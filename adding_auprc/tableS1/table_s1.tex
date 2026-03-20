@@ -1,0 +1,30 @@
+\begin{table}[ht]
+\centering
+\caption{Performance comparison of the LSTM, Transformer, and TPC architectures when training on 12,654 patients from the Blended-ICU dataset.}
+\label{tab:table_s1}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llccc}
+\toprule
+\textbf{Prediction} & \textbf{Validation dataset} & \textbf{LSTM} & \textbf{Transformer} & \textbf{TPC} \\
+\midrule
+\multirow{4}{*}{\makecell[l]{Remaining Length\\of Stay,\\MAPE {[}95\% CI{]}}}
+& AmsterdamUMC & 101.211 [99.572 -- 102.3190] & 95.868 [94.435 -- 97.3920] & 84.081 [82.672 -- 85.4910] \\
+& eICU & 93.204 [91.727 -- 94.6769] & 100.911 [99.200 -- 102.6840] & 88.073 [86.715 -- 89.4480] \\
+& HiRID & 100.064 [98.043 -- 102.0620] & 93.285 [91.359 -- 95.2830] & 86.518 [84.448 -- 88.6390] \\
+& MIMIC-IV & 90.211 [88.898 -- 91.5530] & 91.184 [89.813 -- 92.5810] & 75.646 [74.701 -- 76.6110] \\
+\midrule
+\multirow{4}{*}{\makecell[l]{Mortality,\\AUROC {[}95\% CI{]}}}
+& AmsterdamUMC & 0.764 [0.757 -- 0.771] & 0.745 [0.738 -- 0.752] & 0.846 [0.841 -- 0.851] \\
+& eICU & 0.791 [0.785 -- 0.797] & 0.783 [0.775 -- 0.791] & 0.597 [0.589 -- 0.605] \\
+& HiRID & 0.804 [0.792 -- 0.816] & 0.835 [0.825 -- 0.846] & 0.887 [0.881 -- 0.894] \\
+& MIMIC-IV & 0.755 [0.749 -- 0.760] & 0.795 [0.791 -- 0.799] & 0.788 [0.783 -- 0.793] \\
+\midrule
+\multirow{4}{*}{\makecell[l]{Mortality,\\AUPRC {[}95\% CI{]}}}
+& AmsterdamUMC & 0.296 [0.285 -- 0.307] (baseline: 0.110) & 0.318 [0.306 -- 0.331] (baseline: 0.122) & 0.350 [0.337 -- 0.364] (baseline: 0.098) \\
+& eICU & 0.342 [0.329 -- 0.354] (baseline: 0.117) & 0.335 [0.321 -- 0.350] (baseline: 0.095) & 0.219 [0.211 -- 0.229] (baseline: 0.130) \\
+& HiRID & 0.456 [0.434 -- 0.477] (baseline: 0.073) & 0.309 [0.288 -- 0.334] (baseline: 0.066) & 0.649 [0.632 -- 0.666] (baseline: 0.140) \\
+& MIMIC-IV & 0.402 [0.393 -- 0.411] (baseline: 0.173) & 0.369 [0.360 -- 0.378] (baseline: 0.171) & 0.379 [0.369 -- 0.389] (baseline: 0.145) \\
+\bottomrule
+\end{tabular}
+}
+\end{table}

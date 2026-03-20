@@ -108,9 +108,9 @@ for source in ["amsterdam", "eicu", "hirid", "mimic4"]:
     k += 1
 print("mean gap:", np.mean(mean_gap))
 
-# =============================================================================
+# -------------------------------------------------------------------------
 # ## Precision-Recall curves plot for each dataset
-# =============================================================================
+# -------------------------------------------------------------------------
 import matplotlib.pyplot as plt
 from sklearn.metrics import precision_recall_curve
 
