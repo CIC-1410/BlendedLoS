@@ -1,0 +1,149 @@
+
+training on amsterdam_25
+---> evaluating on amsterdam
+MAPE observée : 101.148%; MAPE reelle: 97.03
+AUC observée : 0.751%; AUC reelle: 0.7
+Met composite observée : 1.181; Met composite reelle: 1.41
+MAPE gap w paper: 4.117831712951414 %
+gap w paper: 0.050946173978006715
+composite gap w paper: 0.22918380749476275
+IC95% pour la MAPE : [99.774%, 102.647%]
+IC95% pour la MAPE reelle : [95.65638689758758 - 98.52878820497133]
+IC95% pour la composite : [1.169%, 1.192%]
+
+AUROC mortality int val: 0.7509461739780068
+AUC : 0.751
+IC95% pour l'AUC : [0.747184557091561, 0.7547077908644524]
+IC95% pour l'AUC : [0.747, 0.755]
+
+---> evaluating on mimic4
+MAPE observée : 104.031%; MAPE reelle: 95.76
+AUC observée : 0.802%; AUC reelle: 0.77
+Met composite observée : 1.327; Met composite reelle: 1.32
+MAPE gap w paper: 8.270504931817669 %
+gap w paper: 0.031611082986547356
+composite gap w paper: 0.006756056892222251
+IC95% pour la MAPE : [102.954%, 105.191%]
+IC95% pour la MAPE reelle : [94.68386531987122 - 96.92083663037818]
+IC95% pour la composite : [1.313%, 1.341%]
+IC95% pour la composite reelle : [1.3063880621453088 - 1.3341268469166467]
+AUROC mortality int val: 0.8016110829865475
+AUC : 0.802
+IC95% pour l'AUC : [0.7977807018748898, 0.8054414640982049]
+IC95% pour l'AUC : [0.798, 0.805]
+
+---> evaluating on ['eicu', 'hirid']
+MAPE observée : 133.065%; MAPE reelle: 117.08
+AUC observée : 0.781%; AUC reelle: 0.78
+Met composite observée : 1.388; Met composite reelle: 1.2
+MAPE gap w paper: 15.984591973114632 %
+gap w paper: 0.0005605840399790507
+composite gap w paper: 0.1878454414608688
+IC95% pour la MAPE : [131.610%, 134.526%]
+IC95% pour la MAPE reelle : [115.62524473698274 - 118.54097719141417]     
+IC95% pour la composite : [1.374%, 1.402%]
+IC95% pour la composite reelle : [1.1861798210572583 - 1.2136911601154607]
+AUROC mortality int val: 0.7805605840399791
+AUC : 0.781
+IC95% pour l'AUC : [0.7764737261497376, 0.7846474419302205]
+IC95% pour l'AUC : [0.776, 0.785]
+mean composite gap: 0.14126176861595127 %
+
+
+training on mimic4_75
+---> evaluating on amsterdam
+MAPE observée : 115.943%; MAPE reelle: 105.53
+AUC observée : 0.725%; AUC reelle: 0.71
+Met composite observée : 1.329; Met composite reelle: 1.43
+MAPE gap w paper: 10.412587657195544 %
+gap w paper: 0.015459062001682122
+composite gap w paper: 0.10067462359649304
+IC95% pour la MAPE : [114.292%, 117.436%]
+IC95% pour la MAPE reelle : [95.37965590166482 - 98.52336312284481]
+IC95% pour la composite : [1.317%, 1.341%]
+IC95% pour la composite reelle : [1.4178247722016417 - 1.441824124014379]
+AUROC mortality int val: 0.7254590620016823
+AUC : 0.725
+IC95% pour l'AUC : [0.7213530672575666, 0.7295650567457975]
+IC95% pour l'AUC : [0.721, 0.730]
+---> evaluating on mimic4
+MAPE observée : 98.891%; MAPE reelle: 79.99
+AUC observée : 0.895%; AUC reelle: 0.86
+Met composite observée : 0.966; Met composite reelle: 0.94
+MAPE gap w paper: 18.90137110203112 %
+gap w paper: 0.035324691387953244
+composite gap w paper: 0.025745145674537784
+IC95% pour la MAPE : [97.815%, 100.034%]
+IC95% pour la MAPE reelle : [94.68316459227476 - 96.90264387147741]
+IC95% pour la composite : [0.956%, 0.976%]
+IC95% pour la composite reelle : [0.9304120389978414 - 0.9498877344917588]
+AUROC mortality int val: 0.8953246913879533
+AUC : 0.895
+IC95% pour l'AUC : [0.8930687679832809, 0.8975806147926255]
+IC95% pour l'AUC : [0.893, 0.898]
+---> evaluating on ['eicu', 'hirid']
+MAPE observée : 123.479%; MAPE reelle: 127.29
+AUC observée : 0.795%; AUC reelle: 0.78
+Met composite observée : 1.293; Met composite reelle: 1.25
+MAPE gap w paper: 3.8109953534689964 %
+gap w paper: 0.014685025967407173
+composite gap w paper: 0.042532064562064154
+IC95% pour la MAPE : [122.250%, 124.705%]
+IC95% pour la MAPE reelle : [115.85125520526881 - 118.30565667046011]
+IC95% pour la composite : [1.281%, 1.304%]
+IC95% pour la composite reelle : [1.2380772807548068 - 1.261803978981325]
+AUROC mortality int val: 0.7946850259674072
+AUC : 0.795
+IC95% pour l'AUC : [0.7910448815472655, 0.7983251703875489]
+IC95% pour l'AUC : [0.791, 0.798]
+mean composite gap: 0.056317277944364995 %
+
+
+training on amsterdam_mimic4_100
+---> evaluating on amsterdam
+MAPE observée : 96.043%; MAPE reelle: 88.04
+AUC observée : 0.754%; AUC reelle: 0.76
+Met composite observée : 1.143; Met composite reelle: 1.21
+MAPE gap w paper: 8.003458249072722 %
+gap w paper: 0.006105854735155347
+composite gap w paper: 0.06748901521056516
+IC95% pour la MAPE : [94.577%, 97.548%]
+IC95% pour la MAPE reelle : [95.56345732377142 - 98.53483616212065]
+IC95% pour la composite : [1.131%, 1.154%]
+IC95% pour la composite reelle : [1.1981715133355793 - 1.2213848251037813]
+AUROC mortality int val: 0.7538941452648446
+AUC : 0.754
+IC95% pour l'AUC : [0.74996239777659, 0.7578258927530993]
+IC95% pour l'AUC : [0.750, 0.758]
+---> evaluating on mimic4
+MAPE observée : 100.480%; MAPE reelle: nan
+AUC observée : 0.875%; AUC reelle: nan
+Met composite observée : 1.047; Met composite reelle: nan
+MAPE gap w paper: nan %
+gap w paper: nan
+composite gap w paper: nan
+IC95% pour la MAPE : [99.341%, 101.586%]
+IC95% pour la MAPE reelle : [94.62100289592091 - 96.86579570584684]
+IC95% pour la composite : [1.036%, 1.058%]
+IC95% pour la composite reelle : [nan - nan]
+AUROC mortality int val: 0.8749571754886776
+AUC : 0.875
+IC95% pour l'AUC : [0.8723568794674352, 0.8775574715099199]
+IC95% pour l'AUC : [0.872, 0.878]
+---> evaluating on ['eicu', 'hirid']
+MAPE observée : 126.830%; MAPE reelle: nan
+AUC observée : 0.820%; AUC reelle: nan
+Met composite observée : 1.242; Met composite reelle: nan
+MAPE gap w paper: nan %
+gap w paper: nan
+composite gap w paper: nan
+IC95% pour la MAPE : [125.519%, 128.240%]
+IC95% pour la MAPE reelle : [115.76859696274214 - 118.49017150168717]
+IC95% pour la composite : [1.231%, 1.253%]
+IC95% pour la composite reelle : [nan - nan]
+AUROC mortality int val: 0.8201501591567384
+AUC : 0.820
+IC95% pour l'AUC : [0.8171130596598517, 0.8231872586536253]
+IC95% pour l'AUC : [0.817, 0.823]
+mean composite gap: nan %
+

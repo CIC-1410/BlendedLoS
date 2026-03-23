@@ -5,46 +5,46 @@
 results = {
     'int_val': {
         'amsterdam': {
-            'mape':       80.3,   'mape_ci':  (79.342, 81.310),
+            'mape':       80.3,   'mape_ci':  (79.500, 81.1),
             'auroc':       0.774,  'auroc_ci': (0.770,  0.778),
-            'auprc':       0.300,  'auprc_ci': (0.293,  0.308), 'auprc_baseline': 0.113, 
+            'auprc':       0.304,  'auprc_ci': (0.296,  0.312), 'auprc_baseline': 0.113,
         },
         'eicu': {
-            'mape':       87.4,   'mape_ci':  (86.587, 88.220),
+            'mape':       87.4,   'mape_ci':  (86.8, 88.0),
             'auroc':       0.788,  'auroc_ci': (0.783,  0.793),
-            'auprc':       0.328,  'auprc_ci': (0.317,  0.338), 'auprc_baseline': 0.078, 
+            'auprc':       0.355,  'auprc_ci': (0.344,  0.365), 'auprc_baseline': 0.078,
         },
         'hirid': {
-            'mape':       83.2,   'mape_ci':  (82.012, 84.400),
+            'mape':       83.2,   'mape_ci':  (82.1, 84.1),
             'auroc':       0.851,  'auroc_ci': (0.847,  0.856),
-            'auprc':       0.444,  'auprc_ci': (0.430,  0.457), 'auprc_baseline': 0.101, 
+            'auprc':       0.441,  'auprc_ci': (0.427,  0.455), 'auprc_baseline': 0.101,
         },
         'mimic4': {
-            'mape':       82.8,   'mape_ci':  (81.977, 83.653),
-            'auroc':       0.858,  'auroc_ci': (0.855,  0.860),
-            'auprc':       0.481,  'auprc_ci': (0.474,  0.487), 'auprc_baseline': 0.161, 
+            'mape':       87.228, 'mape_ci':  (86.319, 88.129),
+            'auroc':       0.897,  'auroc_ci': (0.895,  0.900),
+            'auprc':       0.456,  'auprc_ci': (0.448,  0.464), 'auprc_baseline': 0.108,
         },
     },
     'ext_val': {
         'amsterdam': {
-            'mape':       91.4,   'mape_ci':  (90.600, 92.223),
-            'auroc':       0.738,  'auroc_ci': (0.736,  0.740),
-            'auprc':       0.337,  'auprc_ci': (0.333,  0.342), 'auprc_baseline': 0.119,  
+            'mape':       121.858, 'mape_ci':  (120.910, 122.833),
+            'auroc':       0.808,   'auroc_ci': (0.805,   0.810),
+            'auprc':       0.294,   'auprc_ci': (0.289,   0.299), 'auprc_baseline': 0.091,
         },
         'eicu': {
-            'mape':       98.0,   'mape_ci':  (97.445, 98.566),
-            'auroc':       0.737,  'auroc_ci': (0.734,  0.740),
-            'auprc':       0.330,  'auprc_ci': (0.326,  0.335), 'auprc_baseline': 0.139, 
+            'mape':       100.144, 'mape_ci':  (99.547, 100.761),
+            'auroc':       0.768,   'auroc_ci': (0.766,   0.771),
+            'auprc':       0.269,   'auprc_ci': (0.265,   0.273), 'auprc_baseline': 0.107,
         },
         'hirid': {
-            'mape':       142.5,  'mape_ci':  (142.124, 142.884),
-            'auroc':       0.801,  'auroc_ci': (0.799,   0.803),
-            'auprc':       0.327,  'auprc_ci': (0.323,   0.331), 'auprc_baseline': 0.135,  
+            'mape':       82.975,  'mape_ci':  (82.570, 83.371),
+            'auroc':       0.777,   'auroc_ci': (0.775,  0.779),
+            'auprc':       0.331,   'auprc_ci': (0.327,  0.336), 'auprc_baseline': 0.115,
         },
         'mimic4': {
-            'mape':       83.2,   'mape_ci':  (82.383, 84.055),
-            'auroc':       0.771,  'auroc_ci': (0.768,  0.774),
-            'auprc':       0.280,  'auprc_ci': (0.275,  0.285), 'auprc_baseline': 0.104, 
+            'mape':       109.45,  'mape_ci':  (108.633, 110.266),
+            'auroc':       0.773,   'auroc_ci': (0.770,   0.776),
+            'auprc':       0.270,   'auprc_ci': (0.265,   0.274), 'auprc_baseline': 0.104,
         },
     },
 }

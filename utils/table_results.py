@@ -35,6 +35,9 @@ class TableResults:
 
     def _result_dirs(self):
         p = Path(self.basedir+self.job+'/'+self.task+'/')
+        print(f"DEBUG basedir: {self.basedir}")
+        print(f"DEBUG looking for results in: {p}")
+        print(f"DEBUG p exists: {p.is_dir()}")
 
         if not p.is_dir():
             return {}
@@ -164,7 +167,10 @@ class ResultReader:
     def _configs(self):
         config_pth = self.experiment_directory+'config.json'
         config = json.load(open(config_pth, 'r'))
-        return ExperimentConfig(config)
+        config['config']['results_dir'] = self.experiment_directory
+        print(f"DEBUG results_dir overridden to: {self.experiment_directory}")
+        print(f"DEBUG jobname: {config['config'].get('jobname')}")
+        return ExperimentConfig(config, save=False)
     
 
 class Latexify:

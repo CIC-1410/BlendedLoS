@@ -21,14 +21,16 @@ class Experiments:
     Latex code for tables are printed.
     '''
     def __init__(self,
+                 results_dir='.',
                  model_benchmark='model_benchmark',
                  dataset_benchmark='dataset_benchmark',
-                 dataset_benchmark_nomed='dataset_benchmark_nomed',
+                 dataset_benchmark_nomed='dataset_benchmark_nomed_75',
                  training_size='training_size_study',
                  main_experiment='main_experiment',
                  los_metric='mape',
                  mort_metric='auc'):
         
+        self.results_dir = results_dir
         self.background_color='whitesmoke'
         self.gridcolor='lightgray'
         self.model_benchmark_dirname = model_benchmark
@@ -155,32 +157,33 @@ class Experiments:
                 .to_frame())
 
     def table_model_benchmark(self):
-        experiment_directory = f'results/{self.model_benchmark_dirname}/'
+        experiment_directory = f'{self.results_dir}/results_mimic4update-server/{self.model_benchmark_dirname}/'
+        print("DEBUG experiment_directory:", experiment_directory)
         rp = Results(experiment_directory, los_metric=self.los_metric)
         return rp.tab_model_benchmark()
 
     def table_dataset_benchmark(self):
-        experiment_directory = f'results/{self.dataset_benchmark_dirname}/'
+        experiment_directory = f'{self.results_dir}/results_mimic4update-server/{self.dataset_benchmark_dirname}/'
         rp = Results(experiment_directory, los_metric=self.los_metric)
         return rp.tab_dataset_benchmark()
 
     def table_ntrain(self):
-        experiment_directory = f'results/{self.training_size_dirname}/'
+        experiment_directory = f'{self.results_dir}/results_mimic4update-server/{self.training_size_dirname}/'
         rp = Results(experiment_directory, los_metric=self.los_metric)
         return rp.tab_ntrain()
 
     def table_main_experiment(self):
         rp = Results(
-            experiment_directory=f'results/{self.main_experiment_dirname}/',
+            experiment_directory=f'{self.results_dir}/results_mimic4update-server/{self.main_experiment_dirname}/',
             los_metric=self.los_metric)
         return rp.tab_main_experiment()
 
     def table_annexe_benchmark_med(self):
-        rp_med = Results(f'results/{self.dataset_benchmark_dirname}/',
+        rp_med = Results(f'{self.results_dir}/results_mimic4update-server/{self.dataset_benchmark_dirname}/',
                          los_metric=self.los_metric)
         tab_with_med = rp_med.tab_dataset_benchmark()
 
-        rp_nomed = Results(f'results/{self.dataset_benchmark_nomed_dirname}/',
+        rp_nomed = Results(f'{self.results_dir}/results_mimic4update-server/{self.dataset_benchmark_nomed_dirname}/',
                          los_metric=self.los_metric)
         tab_no_med = rp_nomed.tab_dataset_benchmark()
 
@@ -234,15 +237,24 @@ class Experiments:
         
 
 self = Experiments(
-    main_experiment='main_experiment_ok',
-    model_benchmark='model_benchmark_ok',
-    dataset_benchmark='dataset_benchmark_ok',
-    dataset_benchmark_nomed='dataset_benchmark_nomed',
-    #dataset_benchmark_nomed='dataset_benchmark_nomed_75',
-    training_size='training_size_study_ok',
+    results_dir='Z:/DDS_Rocheteau/BlendedLOS',
+    main_experiment='main_experiment',
+    model_benchmark='model_benchmark',
+    dataset_benchmark='dataset_benchmark',
+    dataset_benchmark_nomed='dataset_benchmark_nomed_75',
+    training_size='training_size_study',
     )
 
-self.get_tables()
+# self.get_tables()
+self.tab_dataset_benchmark = self.table_dataset_benchmark()
+self.baseline_main_experiment = self.get_baseline_main_experiment()
+
+self.tab_main_experiment = (self.table_main_experiment()
+                            .pipe(self._add_composite_criterion,
+                                  baseline=self.baseline_main_experiment)
+                            .pipe(self._remove_not_applicable))
+
+self.tab_main_experiment_formatted = self.format_tab_main_experiment()
 
 tab_med, tab_nomed = self.table_annexe_benchmark_med()
 

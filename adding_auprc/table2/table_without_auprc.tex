@@ -8,22 +8,17 @@
 \textbf{Task} & \textbf{Training dataset} & \textbf{Internal validation} & \textbf{External validation} & \textbf{Variation} \\
 \midrule
 \multirow{4}{*}{\makecell[l]{Remaining Length\\of Stay prediction\\(MAPE) [95\% CI]}}
-& AmsterdamUMC & 80.3 [79.500 -- 81.100] & 121.9 [120.910 -- 122.833] & +51.8\% \\
-& eICU & 87.4 [86.800 -- 88.000] & 100.1 [99.547 -- 100.761] & +14.6\% \\
-& HiRID & 83.2 [82.100 -- 84.100] & 83.0 [82.570 -- 83.371] & -0.3\% \\
+& AmsterdamUMC & 80.3 [79.066 -- 81.568] & 121.9 [120.910 -- 122.833] & +51.8\% \\
+& eICU & 87.4 [86.587 -- 88.207] & 100.1 [99.547 -- 100.761] & +14.6\% \\
+& HiRID & 83.2 [81.923 -- 84.501] & 83.0 [82.570 -- 83.371] & -0.3\% \\
 & MIMIC-IV & 87.2 [86.319 -- 88.129] & 109.5 [108.633 -- 110.266] & +25.5\% \\
 \midrule
 \multirow{4}{*}{\makecell[l]{Mortality prediction\\(AUROC) [95\% CI]}}
 & AmsterdamUMC & 0.774 [0.770 -- 0.778] & 0.808 [0.805 -- 0.810] & +4.4\% \\
 & eICU & 0.788 [0.783 -- 0.793] & 0.768 [0.766 -- 0.771] & -2.5\% \\
-& HiRID & 0.851 [0.847 -- 0.856] & 0.777 [0.775 -- 0.779] & -8.7\% \\
+& HiRID & 0.851 [0.846 -- 0.856] & 0.777 [0.775 -- 0.779] & -8.7\% \\
 & MIMIC-IV & 0.897 [0.895 -- 0.900] & 0.773 [0.770 -- 0.776] & -13.8\% \\
 \midrule
-\multirow{4}{*}{\makecell[l]{Mortality prediction\\(AUPRC) [95\% CI]}}
-& AmsterdamUMC & 0.304 [0.296 -- 0.312] (baseline: 0.113) & 0.294 [0.289 -- 0.299] (baseline: 0.091) & -3.3\% \\
-& eICU & 0.355 [0.344 -- 0.365] (baseline: 0.078) & 0.269 [0.265 -- 0.273] (baseline: 0.107) & -24.2\% \\
-& HiRID & 0.441 [0.427 -- 0.455] (baseline: 0.101) & 0.331 [0.327 -- 0.336] (baseline: 0.115) & -24.9\% \\
-& MIMIC-IV & 0.456 [0.448 -- 0.464] (baseline: 0.108) & 0.270 [0.265 -- 0.274] (baseline: 0.104) & -40.8\% \\
 \bottomrule
 \end{tabular}
 }
