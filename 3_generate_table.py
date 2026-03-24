@@ -158,7 +158,6 @@ class Experiments:
 
     def table_model_benchmark(self):
         experiment_directory = f'{self.results_dir}/results_mimic4update-server/{self.model_benchmark_dirname}/'
-        print("DEBUG experiment_directory:", experiment_directory)
         rp = Results(experiment_directory, los_metric=self.los_metric)
         return rp.tab_model_benchmark()
 
@@ -245,16 +244,15 @@ self = Experiments(
     training_size='training_size_study',
     )
 
-# self.get_tables()
+# self.get_tables()tab_perf_ntrain
 self.tab_dataset_benchmark = self.table_dataset_benchmark()
-self.baseline_main_experiment = self.get_baseline_main_experiment()
+self.baseline_ntrain = self.get_baseline_ntrain()
 
-self.tab_main_experiment = (self.table_main_experiment()
-                            .pipe(self._add_composite_criterion,
-                                  baseline=self.baseline_main_experiment)
-                            .pipe(self._remove_not_applicable))
+self.tab_perf_ntrain = (self.table_ntrain()
+                        .pipe(self._add_composite_criterion,
+                              baseline=self.baseline_ntrain))
 
-self.tab_main_experiment_formatted = self.format_tab_main_experiment()
+self.figure_perf_ntrain(self.tab_perf_ntrain)
 
 tab_med, tab_nomed = self.table_annexe_benchmark_med()
 

@@ -1,0 +1,134 @@
+With Los >2h and mortality == 0 for MAPE:
+
+============================================================
+Training on: amsterdam_25
+============================================================
+
+---> Evaluating on amsterdam
+MAPE      : 90.19  (paper: 97.03)
+AUC       : 0.75  (paper: 0.70)
+Composite : 1.11  (paper: 1.41)
+  gaps -> MAPE: 6.84%, AUC: 0.05, Composite: 0.30
+  IC95% MAPE      : [89.022%, 91.382%]
+  IC95% Composite : [1.102, 1.123]
+  IC95% AUC       : [0.747, 0.755]  (DeLong)
+
+---> Evaluating on mimic4
+MAPE      : 95.92  (paper: 95.76)
+AUC       : 0.80  (paper: 0.77)
+Composite : 1.28  (paper: 1.32)
+  gaps -> MAPE: 0.16%, AUC: 0.03, Composite: 0.04
+  IC95% MAPE      : [95.011%, 96.875%]
+  IC95% Composite : [1.263, 1.293]
+  IC95% AUC       : [0.798, 0.805]  (DeLong)
+
+---> Evaluating on ['eicu', 'hirid']
+MAPE      : 122.64  (paper: 117.08)
+AUC       : 0.78  (paper: 0.78)
+Composite : 1.33  (paper: 1.20)
+  gaps -> MAPE: 5.56%, AUC: 0.00, Composite: 0.13
+  IC95% MAPE      : [121.405%, 123.892%]
+  IC95% Composite : [1.313, 1.339]
+  IC95% AUC       : [0.776, 0.785]  (DeLong)
+
+Mean composite gap across sources: 0.1554
+
+============================================================
+Training on: mimic4_75
+============================================================
+
+---> Evaluating on amsterdam
+MAPE      : 106.73  (paper: 105.53)
+AUC       : 0.72  (paper: 0.71)
+Composite : 1.28  (paper: 1.43)
+  gaps -> MAPE: 1.20%, AUC: 0.01, Composite: 0.15
+  IC95% MAPE      : [105.321%, 108.139%]
+  IC95% Composite : [1.265, 1.291]
+  IC95% AUC       : [0.718, 0.727]  (DeLong)
+
+---> Evaluating on mimic4
+MAPE      : 86.35  (paper: 79.99)
+AUC       : 0.89  (paper: 0.86)
+Composite : 0.89  (paper: 0.94)
+  gaps -> MAPE: 6.36%, AUC: 0.03, Composite: 0.05
+  IC95% MAPE      : [85.480%, 87.182%]
+  IC95% Composite : [0.885, 0.902]
+  IC95% AUC       : [0.892, 0.897]  (DeLong)
+
+---> Evaluating on ['eicu', 'hirid']
+MAPE      : 117.41  (paper: 127.29)
+AUC       : 0.80  (paper: 0.78)
+Composite : 1.25  (paper: 1.25)
+  gaps -> MAPE: 9.88%, AUC: 0.02, Composite: 0.00
+  IC95% MAPE      : [116.275%, 118.576%]
+  IC95% Composite : [1.239, 1.265]
+  IC95% AUC       : [0.793, 0.800]  (DeLong)
+
+Mean composite gap across sources: 0.0669
+
+============================================================
+Training on: amsterdam_25_retrain_all_layers
+============================================================
+
+---> Evaluating on amsterdam
+MAPE      : 89.24  (paper: 88.04)
+AUC       : 0.76  (paper: 0.76)
+Composite : 1.08  (paper: 1.21)
+  gaps -> MAPE: 1.20%, AUC: 0.00, Composite: 0.13
+  IC95% MAPE      : [87.991%, 90.444%]
+  IC95% Composite : [1.066, 1.091]
+  IC95% AUC       : [0.759, 0.768]  (DeLong)
+
+---> Evaluating on mimic4
+MAPE      : 92.63  (paper: nan)
+AUC       : 0.83  (paper: nan)
+Composite : 1.17  (paper: nan)
+  gaps -> MAPE: nan%, AUC: nan, Composite: nan
+  IC95% MAPE      : [91.674%, 93.529%]
+  IC95% Composite : [1.157, 1.181]
+  IC95% AUC       : [0.824, 0.830]  (DeLong)
+
+---> Evaluating on ['eicu', 'hirid']
+MAPE      : 120.75  (paper: nan)
+AUC       : 0.81  (paper: nan)
+Composite : 1.24  (paper: nan)
+  gaps -> MAPE: nan%, AUC: nan, Composite: nan
+  IC95% MAPE      : [119.528%, 121.978%]
+  IC95% Composite : [1.233, 1.256]
+  IC95% AUC       : [0.803, 0.810]  (DeLong)
+
+Mean composite gap across sources: 0.1312
+
+============================================================
+Training on: amsterdam_mimic4_100
+============================================================
+
+---> Evaluating on amsterdam
+MAPE      : 84.49  (paper: 86.00)
+AUC       : 0.75  (paper: 0.74)
+Composite : 1.07  (paper: 1.26)
+  gaps -> MAPE: 1.51%, AUC: 0.01, Composite: 0.19
+  IC95% MAPE      : [83.492%, 85.514%]
+  IC95% Composite : [1.059, 1.081]
+  IC95% AUC       : [0.750, 0.758]  (DeLong)
+
+---> Evaluating on mimic4
+MAPE      : 87.33  (paper: 80.47)
+AUC       : 0.87  (paper: 0.84)
+Composite : 0.97  (paper: 1.02)
+  gaps -> MAPE: 6.86%, AUC: 0.03, Composite: 0.05
+  IC95% MAPE      : [86.537%, 88.260%]
+  IC95% Composite : [0.958, 0.979]
+  IC95% AUC       : [0.872, 0.878]  (DeLong)
+
+---> Evaluating on ['eicu', 'hirid']
+MAPE      : 111.07  (paper: 117.02)
+AUC       : 0.82  (paper: 0.82)
+Composite : 1.15  (paper: 1.09)
+  gaps -> MAPE: 5.95%, AUC: 0.00, Composite: 0.06
+  IC95% MAPE      : [110.042%, 112.174%]
+  IC95% Composite : [1.139, 1.159]
+  IC95% AUC       : [0.817, 0.823]  (DeLong)
+
+Mean composite gap across sources: 0.1003
+
