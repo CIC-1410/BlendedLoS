@@ -59,7 +59,7 @@ def bootstrap_metrics(df, df_alive, mape_ref, auc_ref, n_bootstrap=1000):
     composite_boot = np.zeros(n_bootstrap)
 
     for j in range(n_bootstrap):
-        # Fix #1: rééchantillonner le DataFrame entier pour garder l'alignement patient
+        # Rééchantillonner le DataFrame entier pour garder l'alignement patient
         df_boot = resample(df, random_state=j)
 
         fpr, tpr, _ = metrics.roc_curve(df_boot["label_mort"], df_boot["pred_mort"], pos_label=1)

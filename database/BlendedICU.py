@@ -14,7 +14,7 @@ class BlendedICU:
         self.ts_variables = self._get_ts_variables()
         self.kept_meds = self._kept_meds()
         self.data_pth = paths['blendedICU']
-        self.data_pth = "Z:/DDS_Rocheteau/BLENDED_ICU_2/blended_data/"
+        self.data_pth = "Y:/DDS_Rocheteau/BLENDED_ICU_2/blended_data/"
         self.formatted_ts_pth = self.data_pth+'formatted_timeseries/'
         self.ts_pths_file = '/timeseries_pths.csv'
         self.ts_pth = self.data_pth + 'preprocessed_timeseries/'
