@@ -44,50 +44,50 @@ for source in ["amsterdam", "eicu", "hirid", "mimic4"]:
         mape_paper = [91.4, 98.0, 142.5, 83.2]  # ext val
         auc_paper  = [0.738, 0.737, 0.801, 0.771]  # ext val
 
-    # # Agregation by patient
-    # df_pred = df_pred.groupby('patientids').last().reset_index()
+    # Agregation by patient
+    df_pred = df_pred.groupby('patientids').last().reset_index()
 
-#     # -------------------------------------------------------------------------
-#     ## compute rlos mape — filtre: survivants uniquement + séjours > 2h
-#     # -------------------------------------------------------------------------
-#     df_rlos = df_pred[df_pred["label_mort"] == 0]
-#     df_rlos = df_rlos[df_rlos["label_los"] > 2/24]
-#     y_true_los, y_pred_los = df_rlos["label_los"], df_rlos["pred_los"]
+    # -------------------------------------------------------------------------
+    ## compute rlos mape — filtre: survivants uniquement + séjours > 2h
+    # -------------------------------------------------------------------------
+    df_rlos = df_pred[df_pred["label_mort"] == 0]
+    df_rlos = df_rlos[df_rlos["label_los"] > 2/24]
+    y_true_los, y_pred_los = df_rlos["label_los"], df_rlos["pred_los"]
 
-#     mape = calculate_mape(y_true_los, y_pred_los)
-#     print(f'MAPE los {val_mode}:', round(mape, 3), "% mape in paper:", mape_paper[k], '%')
-#     print("gap w paper:", abs(mape - mape_paper[k]))
-#     mean_gap.append(abs(mape - mape_paper[k]))
+    mape = calculate_mape(y_true_los, y_pred_los)
+    print(f'MAPE los {val_mode}:', round(mape, 3), "% mape in paper:", mape_paper[k], '%')
+    print("gap w paper:", abs(mape - mape_paper[k]))
+    mean_gap.append(abs(mape - mape_paper[k]))
 
-#     ## Bootstrap pour IC95% de la MAPE
+    ## Bootstrap pour IC95% de la MAPE
     n_bootstrap = 10000
-#     mape_bootstrapped = np.zeros(n_bootstrap)
-#     for i in range(n_bootstrap):
-#         y_true_resampled, y_pred_resampled = resample(y_true_los, y_pred_los, random_state=i)
-#         mape_bootstrapped[i] = calculate_mape(y_true_resampled, y_pred_resampled)
+    mape_bootstrapped = np.zeros(n_bootstrap)
+    for i in range(n_bootstrap):
+        y_true_resampled, y_pred_resampled = resample(y_true_los, y_pred_los, random_state=i)
+        mape_bootstrapped[i] = calculate_mape(y_true_resampled, y_pred_resampled)
 
-#     lower_bound = np.percentile(mape_bootstrapped, 2.5)
-#     upper_bound = np.percentile(mape_bootstrapped, 97.5)
-#     print(f"IC95% pour la MAPE {val_mode}: [{lower_bound:.3f}%, {upper_bound:.3f}%]")
-#     ecart_1, ecart_2 = mape - lower_bound, upper_bound - mape
-#     print(f"IC95% pour la MAPE reelle : [{mape_paper[k]-ecart_1:.3f} - {mape_paper[k]+ecart_2:.3f}]")
+    lower_bound = np.percentile(mape_bootstrapped, 2.5)
+    upper_bound = np.percentile(mape_bootstrapped, 97.5)
+    print(f"IC95% pour la MAPE {val_mode}: [{lower_bound:.3f}%, {upper_bound:.3f}%]")
+    ecart_1, ecart_2 = mape - lower_bound, upper_bound - mape
+    print(f"IC95% pour la MAPE reelle : [{mape_paper[k]-ecart_1:.3f} - {mape_paper[k]+ecart_2:.3f}]")
 
 #     # -------------------------------------------------------------------------
 #     ## compute mortality AUROC via DeLong
 #     # -------------------------------------------------------------------------
     y_true_mort, y_score_mort = df_pred["label_mort"], df_pred["pred_mort"]
 
-#     ground_truth = y_true_mort.to_numpy()
-#     predictions  = y_score_mort.to_numpy()
-#     auc, auc_cov = delong_roc_variance(ground_truth, predictions)
-#     print(f'delong {val_mode} AUC variance is: {auc_cov}')
-#     auc_std     = np.sqrt(auc_cov)
-#     lower_bound = auc - 1.96 * auc_std
-#     upper_bound = auc + 1.96 * auc_std
-#     print(f"AUC : {auc:.3f}", "in paper:", auc_paper[k])
-#     print(f"IC95% pour l'AUC (DeLong) : [{lower_bound:.3f}, {upper_bound:.3f}]")
-#     ecart_1, ecart_2 = auc - lower_bound, upper_bound - auc
-#     print(f"IC95% pour l'AUC reelle : [{auc_paper[k]-ecart_1:.3f} - {auc_paper[k]+ecart_2:.3f}]")
+    ground_truth = y_true_mort.to_numpy()
+    predictions  = y_score_mort.to_numpy()
+    auc, auc_cov = delong_roc_variance(ground_truth, predictions)
+    print(f'delong {val_mode} AUC variance is: {auc_cov}')
+    auc_std     = np.sqrt(auc_cov)
+    lower_bound = auc - 1.96 * auc_std
+    upper_bound = auc + 1.96 * auc_std
+    print(f"AUC : {auc:.3f}", "in paper:", auc_paper[k])
+    print(f"IC95% pour l'AUC (DeLong) : [{lower_bound:.3f}, {upper_bound:.3f}]")
+    ecart_1, ecart_2 = auc - lower_bound, upper_bound - auc
+    print(f"IC95% pour l'AUC reelle : [{auc_paper[k]-ecart_1:.3f} - {auc_paper[k]+ecart_2:.3f}]")
 
     # -------------------------------------------------------------------------
     ## compute mortality AUPRC via Bootstrap (pas d'équivalent DeLong )
@@ -109,7 +109,7 @@ for source in ["amsterdam", "eicu", "hirid", "mimic4"]:
 
     print("\n")
     k += 1
-    # print("mean gap:", np.mean(mean_gap))
+    print("mean gap:", np.mean(mean_gap))
 
 # -------------------------------------------------------------------------
 # ## Precision-Recall curves plot for each dataset

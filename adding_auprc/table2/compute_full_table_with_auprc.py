@@ -26,8 +26,8 @@ k = 0
 mean_gap = []
 for source in ["mimic4"]:
     print(f'{source}')
-    path1 = "Z:/DDS_Rocheteau/BlendedLOS/results_mimic4update-server/dataset_benchmark/"+source+"_75/multitask/TPC/26-03-20_212503/test_predictions_los.csv"
-    path2 = "Z:/DDS_Rocheteau/BlendedLOS/results_mimic4update-server/dataset_benchmark/"+source+"_75/multitask/TPC/26-03-20_212503/test_predictions_mort.csv"
+    path1 = "Y:/DDS_Rocheteau/BlendedLOS/results_mimic4update-server/dataset_benchmark/"+source+"_75/multitask/TPC/26-03-20_212503/test_predictions_los.csv"
+    path2 = "Y:/DDS_Rocheteau/BlendedLOS/results_mimic4update-server/dataset_benchmark/"+source+"_75/multitask/TPC/26-03-20_212503/test_predictions_mort.csv"
     df_los = pd.read_csv(path1)
     df_pred = pd.read_csv(path2)
     df_pred["pred_los"], df_pred["label_los"] = df_los["pred_los"], df_los["label"]
@@ -123,7 +123,7 @@ source_labels = {"amsterdam": "AmsterdamUMC", "eicu": "eICU",
                  "hirid": "HiRID", "mimic4": "MIMIC-IV"}
 
 for k, source in enumerate(sources):
-    path2 = ("Z:/DDS_Rocheteau/BlendedLOS/results_mimic4update-server/dataset_benchmark/"
+    path2 = ("Y:/DDS_Rocheteau/BlendedLOS/results_mimic4update-server/dataset_benchmark/"
              + source + "_75/multitask/TPC/26-03-20_212503/test_predictions_mort.csv")
     df = pd.read_csv(path2)
     df.rename(columns={"label": "label_mort"}, inplace=True)
