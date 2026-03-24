@@ -236,7 +236,7 @@ class Experiments:
         
 
 self = Experiments(
-    results_dir='Z:/DDS_Rocheteau/BlendedLOS',
+    results_dir='Y:/DDS_Rocheteau/BlendedLOS',
     main_experiment='main_experiment',
     model_benchmark='model_benchmark',
     dataset_benchmark='dataset_benchmark',
@@ -244,15 +244,7 @@ self = Experiments(
     training_size='training_size_study',
     )
 
-# self.get_tables()tab_perf_ntrain
-self.tab_dataset_benchmark = self.table_dataset_benchmark()
-self.baseline_ntrain = self.get_baseline_ntrain()
-
-self.tab_perf_ntrain = (self.table_ntrain()
-                        .pipe(self._add_composite_criterion,
-                              baseline=self.baseline_ntrain))
-
-self.figure_perf_ntrain(self.tab_perf_ntrain)
+# self.get_tables()
 
 tab_med, tab_nomed = self.table_annexe_benchmark_med()
 
