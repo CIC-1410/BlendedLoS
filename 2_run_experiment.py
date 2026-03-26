@@ -44,8 +44,6 @@ experiments = [
     'model_benchmark',
     'dataset_benchmark',
     'main_experiment'
-    'dataset_benchmark_nomed_75',
-    'main_experiment',
     'training_size_study',
     ]
 
