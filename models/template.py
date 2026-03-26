@@ -88,7 +88,7 @@ class Template(BlendedICU):
                     print(name)
             print()
                 
-        model = torch.load(self.config.pretrained_model_pth)
+        model = torch.load(self.config.pretrained_model_pth, weights_only = False)
         
         _set_trainable_layers(model)
         
@@ -180,7 +180,8 @@ class Template(BlendedICU):
             
     def test(self):
         self.trainvaltest = 'test'
-        self.model = torch.load(self.model_savepath)
+        self.model = torch.load(self.model_savepath, weights_only = False)
+        # self.model = torch.load(self.model_savepath)
         self.model.eval()
         with torch.no_grad():
             self._run_batches()
