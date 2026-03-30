@@ -1,6 +1,8 @@
 # Welcome the the BlendedLoS code repository
 This is the repository from *Multi-Source Data Pooling and Transfer Learning Improve Generalizability and Specialization of Deep Learning Models for ICU Mortality and Length of Stay Prediction: A Four-Database External Validation Study*.
 
+This project is co-financed by the European Union and the Réunion Region. Europe is committed to Réunion with FEDER funds. This research is part of the ReALARM project. 
+
 ## Usage:
 
 
