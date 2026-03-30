@@ -51,15 +51,15 @@ class DataSplitter(BlendedICU):
         uniquepids = pd.concat([g for _, g in self.grouped_patients]).index
         
         labels = self.labels.loc[self.labels.uniquepid.isin(uniquepids)]
-        print(f'Saving {self.extracted_labels_pth}') # toggle comment  if already saved
-        # labels.to_parquet(self.extracted_labels_pth)
+        print(f'Saving {self.extracted_labels_pth}') 
+        labels.to_parquet(self.extracted_labels_pth) # toggle comment  if already saved
 
     def build_index(self):
         index_pth = [p for p in Path(self.ts_pth).iterdir() if p.is_dir()]
         ts_pths_s = [self.read_index(p) for p in index_pth]
         ts_pths = pd.concat(ts_pths_s)
         ts_pths = ts_pths.join(self.labels[['uniquepid', 'source_dataset']])
-        # ts_pths.to_csv(self.ts_pth+'index.csv', sep=';') # toggle comment  if already saved
+        ts_pths.to_csv(self.ts_pth+'index.csv', sep=';') # toggle comment  if already saved
         if ts_pths.empty:
             raise ValueError(f'Timeseries not found at {self.ts_pth}')
         return ts_pths
@@ -127,7 +127,7 @@ class DataSplitter(BlendedICU):
     def _split_timeseries_pths(self, stays, target_pth):
         savepath = f'{target_pth}/timeseries_pths.csv'
         df = self.ts_pths.loc[stays]
-        # df.to_csv(savepath) # toggle comment if already saved
+        df.to_csv(savepath) # toggle comment if already saved
         print(f'   saving {savepath}')
      
     def run(self, train_on):

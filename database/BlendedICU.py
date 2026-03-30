@@ -14,18 +14,15 @@ class BlendedICU:
         self.ts_variables = self._get_ts_variables()
         self.kept_meds = self._kept_meds()
         self.data_pth = paths['blendedICU']
-        self.data_pth = "E:/data/DDS_Rocheteau/BLENDED_ICU_2/blended_data/"
         self.formatted_ts_pth = self.data_pth+'formatted_timeseries/'
         self.ts_pths_file = '/timeseries_pths.csv'
         self.ts_pth = self.data_pth + 'preprocessed_timeseries/'
-        # self.ts_pth = self.data_pth + 'partially_processed_timeseries/'
         self.col_los = 'lengthofstay'
         self.col_truelos = 'true_lengthofstay'
         self.col_mort = 'mortality'
         self.extraction_dirname = 'extraction'
         self.extraction_pth = f'{self.data_pth}/{self.extraction_dirname}/'
         self.extracted_labels_pth = f'{self.extraction_pth}extracted_labels.parquet'
-        # self.extracted_labels_pth = f'{self.data_pth}preprocessed_labels.parquet'
         self.med_usage_pth = f'{self.extraction_pth}med_usage.parquet'
         Path(self.extracted_labels_pth).parent.mkdir(exist_ok=True) 
     
@@ -41,8 +38,8 @@ class BlendedICU:
             chunk_patient_usage = df.groupby(level='patient').any().astype(int)
             med_usage = pd.concat([chunk_patient_usage, med_usage])
             
-        #     med_usage.to_parquet(temp_pth) # toggle comment if already saved
-        # med_usage.to_parquet(self.med_usage_pth) # toggle comment if already saved
+            med_usage.to_parquet(temp_pth) # toggle comment if already saved
+        med_usage.to_parquet(self.med_usage_pth) # toggle comment if already saved
         Path(temp_pth).unlink()
         
     def _kept_meds(self):
@@ -72,7 +69,7 @@ class BlendedICU:
                                            columns=['ts_pth'])
                     .rename_axis('patient'))
         print(f'Saving index file {index_pth}')
-        # index_df.to_csv(index_pth, sep=';') # toggle comment if already saved
+        index_df.to_csv(index_pth, sep=';') # toggle comment if already saved
         return index_df
     
     def build_full_index(self):
@@ -81,7 +78,7 @@ class BlendedICU:
         index_dfs = [self._build_index(p) for p in Path(self.ts_pth).iterdir() if p.is_dir()]
         index_df = pd.concat(index_dfs)
         print(f'Saving index file {index_pth}')
-        # index_df.to_csv(index_pth, sep=';') # toggle comment if already saved
+        index_df.to_csv(index_pth, sep=';') # toggle comment if already saved
         return index_df
     
     def load(self, pth, verbose=True, **kwargs):
@@ -96,7 +93,7 @@ class BlendedICU:
         """
         Path(savepath).parent.mkdir(parents=True, exist_ok=True)
         print(f'   saving {savepath}')
-        # df.to_parquet(savepath, schema=pyarrow_schema) # toggle comment if already saved
+        df.to_parquet(savepath, schema=pyarrow_schema) # toggle comment if already saved
         return df
     
     def read_index(self, ts_dir):
