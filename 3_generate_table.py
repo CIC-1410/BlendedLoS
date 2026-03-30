@@ -15,8 +15,8 @@ class Experiments:
     It creates a table or figure for each of the four experiments:
         model_benchmark
         dataset_benchmark
-        main_experiment
-        training_size_study
+        main_experiment : needs dataset_benchmark results (as int_val is the baseline)
+        training_size_study : idem 
         
     Latex code for tables are printed.
     '''
@@ -128,15 +128,13 @@ class Experiments:
         self.tab_model_benchmark = self.table_model_benchmark()
         self.tab_dataset_benchmark = self.table_dataset_benchmark()
         self.baseline_main_experiment = self.get_baseline_main_experiment()
-        self.baseline_ntrain = self.get_baseline_ntrain()
-        
         self.tab_main_experiment = (self.table_main_experiment()
                                     .pipe(self._add_composite_criterion,
                                           baseline=self.baseline_main_experiment)
                                     .pipe(self._remove_not_applicable))
-        
         self.tab_main_experiment_formatted = self.format_tab_main_experiment()
-        
+       
+        self.baseline_ntrain = self.get_baseline_ntrain()
         self.tab_perf_ntrain = (self.table_ntrain()
                                 .pipe(self._add_composite_criterion,
                                       baseline=self.baseline_ntrain))
@@ -234,16 +232,10 @@ class Experiments:
         
 
 self = Experiments(
-    main_experiment='main_experiment_ok',
-    model_benchmark='model_benchmark_ok',
-    dataset_benchmark='dataset_benchmark_ok',
-    dataset_benchmark_nomed='dataset_benchmark_nomed',
-    #dataset_benchmark_nomed='dataset_benchmark_nomed_75',
-    training_size='training_size_study_ok',
+    dataset_benchmark='dataset_benchmark',
+    main_experiment='main_experiment',
+    model_benchmark='model_benchmark',
+    training_size='training_size_study',
     )
 
 self.get_tables()
-
-tab_med, tab_nomed = self.table_annexe_benchmark_med()
-
-tab_nomed['diff_'] = (tab_nomed['internal']-tab_nomed['external'])/tab_nomed['internal']
