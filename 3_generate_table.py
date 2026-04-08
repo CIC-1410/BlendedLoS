@@ -56,27 +56,30 @@ class Experiments:
         tab_los = tab_n_train.loc['LoS', 'total']
         tab_mort = tab_n_train.loc['mortality', 'total']
         tab_composite = tab_n_train.loc['composite', 'total']
-
-        ax_los.plot(tab_los, color=lcolor, marker='x')
-        ax_mort.plot(tab_mort, color=rcolor,  marker='x')
-        ax_composite.plot(tab_composite, color=composite_color, marker='x')
+        
+        ax_los.plot(tab_los, color=lcolor, linestyle ='', marker='x',
+                     markersize=8)
+        ax_mort.plot(tab_mort, color=rcolor, linestyle ='', marker='x',
+                      markersize=8)
+        ax_composite.plot(tab_composite, color=composite_color, 
+                          linestyle ='', marker='x', markersize=8)
         
         ax_los.annotate('RLoS',
-                        (tab_los.index[-1], tab_los.values[-1]+0.15),
+                        (tab_los.index[-1], tab_los.values[-1]+0.40),
                         color=lcolor,
                         rotation=0,
                         ha='right')
         
         ax_mort.annotate('Mortality',
-                     (tab_mort.index[-1], tab_mort.values[-1]+0.005),
+                     (tab_mort.index[-1], tab_mort.values[-1]-0.020),
                      ha='right',
                      rotation=0,
                      color=rcolor)
         
         ax_composite.annotate('Composite',
-                      (tab_composite.index[-1], tab_composite.values[-1]+0.013),
+                      (tab_composite.index[-1], tab_composite.values[-1]+0.020),
                       ha='right',
-                      rotation=-5,
+                      rotation=0,
                       color=composite_color)
         
         ax_los.set_facecolor(self.background_color)
@@ -98,7 +101,7 @@ class Experiments:
         ax_mort.tick_params(axis='y', colors=rcolor)
         ax_composite.tick_params(axis='y', colors=composite_color)
         
-        ax_mort.spines['right'].set_position(('outward', 45))
+        ax_mort.spines['right'].set_position(('outward', 55))
         ax_los.spines['right'].set_position(('outward', 0))
         
         fig.tight_layout()
